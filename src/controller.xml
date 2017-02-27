@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<controller>
+	<interceptor name="intes1" class="ustc.keene.mvc.test.login.InterceptorTest" />
+	<interceptor name="intes2" class="ustc.keene.mvc.test.login.InterceptorTest" />
+	<page_controller name="login"
+		class="ustc.keene.mvc.test.login.LoginPageController" method="login">			
+		<result name="success" type="forward" target="pages/success_login.html" />
+		<result name="failure" type="redirect" target="pages/register.html" />
+	</page_controller>
+	<page_controller name="register"
+		class="ustc.keene.mvc.test.login.RegisterPageController">
+		<interceptor_ref name="intes1" />	
+		<interceptor_ref name="intes2" />
+		<result target="pages/success_register.html" />
+		<result name="failure" type="redirect" target="pages/failure_register.html" />
+	</page_controller>
+</controller>
